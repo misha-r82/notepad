@@ -5,6 +5,19 @@
   <div *ngFor="let category of notepad.notepad">
     <a [routerLink]="'/notepad/category/'+category.category">{{category.category}}</a>
   </div>
+  <br>
+  <form [formGroup]="categoryForm" novalidate (ngSubmit)="submit()">
+    <div class="form-group">
+      <label>Заметка</label>
+      <input class="form-control" [(ngModel)]="header" formControlName="header"/>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-default" [disabled]="categoryForm.invalid">
+        Отправить
+      </button>
+    </div>
+  </form>
 </div>
 <router-outlet></router-outlet>
 

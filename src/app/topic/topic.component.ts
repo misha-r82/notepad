@@ -12,13 +12,13 @@ export class TopicComponent implements OnInit {
   myForm: FormGroup;
   constructor(){
     this.myForm = new FormGroup({
-      "header": new FormControl("header", Validators.required),
+      "header": new FormControl("" , Validators.required),
       "text": new FormControl(""),
     });
   }
 
   submit(){
-    console.log(this.myForm);
+    this.topic.category.topics.push(new TopicModel(this.topic.header, this.topic.text, this.topic.category));
   }
 
 

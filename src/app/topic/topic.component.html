@@ -1,19 +1,17 @@
-<p>
-  topic works!
-</p>
+
 <form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
   <div class="form-group">
     <label>Заголовок</label>
-    <input class="form-control" name="name" formControlName="userName" />
+    <input class="form-control" [(ngModel)]="topic.header" formControlName="header" />
 
     <div class="alert alert-danger"
-         *ngIf="myForm.controls['userName'].invalid && myForm.controls['userName'].touched">
+         *ngIf="myForm.controls['header'].invalid && myForm.controls['header'].touched">
       Не указан заголовок
     </div>
   </div>
   <div class="form-group">
     <label>Заметка</label>
-    <input class="form-control" name="text" formControlName="text" />
+    <textarea class="form-control" [(ngModel)]="topic.text"  formControlName="text"></textarea>
   </div>
   <div class="form-group">
     <button class="btn btn-default" [disabled]="myForm.invalid">

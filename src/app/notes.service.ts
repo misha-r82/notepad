@@ -8,6 +8,7 @@ import {TopicModel} from './models/topic.model';
 export class NotesService {
 public notepad: CategoryModel[];
   constructor() {
+    this.notepad = [];
     let topics = [new TopicModel("токарный станок", "40000p для выполнения токарных работ"),
       new TopicModel("фрезерный станок", "50000р для выполения фрезерных работ"),
     new TopicModel("Курс Angular", "12000р бесполезная вещь, взможно для чего-то сгодится")];

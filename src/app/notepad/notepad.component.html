@@ -1,5 +1,10 @@
 <p>
   notepad works!
 </p>
+<div id="sidebar">
+  <div *ngFor="let category of notepad.notepad">
+    <a [routerLink]="'/notepad/category/'+category.category">{{category.category}}</a>
+  </div>
+</div>
+<router-outlet></router-outlet>
 
-<app-topic></app-topic>

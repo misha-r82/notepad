@@ -1,6 +1,3 @@
-<p>
-  notepad works!
-</p>
 <div id="sidebar">
   <div *ngFor="let category of notepad.notepad">
     <a [routerLink]="'/notepad/category/'+category.category">{{category.category}}</a>
@@ -8,13 +5,18 @@
   <br>
   <form [formGroup]="categoryForm" novalidate (ngSubmit)="submit()">
     <div class="form-group">
-      <label>Заметка</label>
+      <label>Новая категория</label>
       <input class="form-control" [(ngModel)]="header" formControlName="header"/>
+      <div  class="error" *ngIf="categoryForm.controls['header'].invalid && categoryForm.controls['header'].dirty">
+        {{categoryForm.get('header').getError('categoryValidator')}}
+        <div *ngIf="categoryForm.get('header').getError('required')">
+          Поле обязательно для заполнения
+        </div>
+      </div>
     </div>
-
     <div class="form-group">
       <button class="btn btn-default" [disabled]="categoryForm.invalid">
-        Отправить
+        Создать
       </button>
     </div>
   </form>

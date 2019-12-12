@@ -8,7 +8,8 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/
   styleUrls: ['./topic.component.css']
 })
 export class TopicComponent implements OnInit {
-@Input() public topic: TopicModel;
+  @Input() public topic: TopicModel;
+  @Input() isNewElement: boolean = false;
   myForm: FormGroup;
   constructor(){
     this.myForm = new FormGroup({
@@ -25,4 +26,7 @@ export class TopicComponent implements OnInit {
   ngOnInit() {
   }
 
+  frmClick() {
+    this.topic.IsActive = true;
+  }
 }

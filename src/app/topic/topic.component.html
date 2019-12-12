@@ -1,21 +1,21 @@
 
-<form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
+<form [formGroup]="myForm" novalidate (ngSubmit)="submit()" (click)="frmClick()">
   <div class="form-group">
-    <label>Заголовок</label>
-    <input class="form-control" [(ngModel)]="topic.header" formControlName="header" />
-
-    <div class="alert alert-danger"
-         *ngIf="myForm.controls['header'].invalid && myForm.controls['header'].touched">
-      Не указан заголовок
+    <div *ngIf="isNewElement">Заголовок</div>
+    <input *ngIf="topic.IsActive" class="form-control" [(ngModel)]="topic.header" formControlName="header" />
+    <h3 *ngIf="!topic.IsActive">{{topic.header}}</h3>
+    <div  class="error" *ngIf="myForm.controls['header'].invalid && myForm.controls['header'].dirty">
+        Поле обязательно для заполнения
     </div>
   </div>
   <div class="form-group">
-    <label>Заметка</label>
-    <textarea class="form-control" [(ngModel)]="topic.text"  formControlName="text"></textarea>
+    <div *ngIf="isNewElement">Текст</div>
+    <textarea *ngIf="topic.IsActive" class="form-control" [(ngModel)]="topic.text"  formControlName="text"></textarea>
+    <div *ngIf="!topic.IsActive">{{topic.text}}</div>
   </div>
   <div class="form-group">
-    <button class="btn btn-default" [disabled]="myForm.invalid">
-      Отправить
+    <button *ngIf="isNewElement" class="btn btn-default" [disabled]="myForm.invalid">
+      Добавить
     </button>
   </div>
 </form>

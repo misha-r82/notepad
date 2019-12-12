@@ -6,14 +6,14 @@ import { NotepadComponent } from './notepad/notepad.component';
 import {AppRoutingModule} from './app-routing.module';
 import { TopicComponent } from './topic/topic.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import { CategoryComponent } from './category/category.component';
+import { CategoryesComponent } from './category/categoryes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NotepadComponent,
     TopicComponent,
-    CategoryComponent
+    CategoryesComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, ReactiveFormsModule

@@ -16,9 +16,10 @@ export class NotepadComponent implements OnInit {
 public header: string;
 categoryForm: FormGroup;
   constructor(private notepad:NotesService, private fb:FormBuilder) {
+
     this.categoryForm = fb.group(
         {
-          header:['', [Validators.required, this.categoryValidator]]
+          header:['', [Validators.required, this.categoryValidator.bind(this)]]
         }
     )
   }
@@ -26,9 +27,7 @@ categoryForm: FormGroup;
     this.notepad.notepad.push(new CategoryModel(this.header));
   }
   categoryValidator(control: FormControl): ValidationErrors | null {
-    debugger
     if (!this) return null;
-    console.log(control.value);
     if (this.notepad.notepad.findIndex((c)=>c.category === control.value) > -1) {
       return {categoryValidator: 'Такая категория уже существует!'}
     }
@@ -40,3 +39,4 @@ categoryForm: FormGroup;
   }
 
 }
+
